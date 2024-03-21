@@ -2,6 +2,8 @@ from sklearn.datasets import load_iris
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
+import pickle
+
 
 # Load dataset
 iris = load_iris()
@@ -19,3 +21,10 @@ model.fit(X_train, y_train)
 y_pred = model.predict(X_test)
 accuracy = accuracy_score(y_test, y_pred)
 print("Accuracy:", accuracy)
+
+
+
+
+# Save the trained model to a file
+with open('model.pkl', 'wb') as model_file:
+    pickle.dump(model, model_file)
